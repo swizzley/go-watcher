@@ -58,6 +58,24 @@ func (b *Builder) Build(p *Params) {
 
 		// and start the new process
 		b.runner.restart(fileName)
+
+		// make build
+		cmd, err = runCommand("make", "build")
+		if err != nil {
+			log.Fatalf("Could not run 'make build' command: %s", err)
+			continue
+		}
+
+		if err := cmd.Wait(); err != nil {
+			if err := interpretError(err); err != nil {
+				color.Red("An error occurred while building: %s", err)
+			} else {
+				color.Red("A make error occurred. Please update your code...")
+			}
+
+			continue
+		}
+		log.Println("make completed")
 	}
 }
 

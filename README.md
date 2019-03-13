@@ -1,6 +1,8 @@
 Watcher [![GoDoc](https://godoc.org/github.com/canthefason/go-watcher?status.svg)](https://godoc.org/github.com/canthefason/go-watcher) [![Build Status](https://travis-ci.org/canthefason/go-watcher.svg?branch=master)](https://travis-ci.org/canthefason/go-watcher)
 =======
 
+Forked to run make file on successful build
+
 Watcher is a command line tool inspired by [fresh](https://github.com/pilu/fresh) and used for watching .go file changes, and restarting the app in case of an update/delete/add operation.
 
 Most of the existing file watchers have a configuration burden, and even though Go has a really short build time, this configuration burden makes your binaries really hard to run right away. With Watcher, we aimed simplicity in configuration, and tried to make it as simple as possible.
