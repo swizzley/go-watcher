@@ -1,4 +1,4 @@
-Watcher [![GoDoc](https://godoc.org/github.com/canthefason/go-watcher?status.svg)](https://godoc.org/github.com/canthefason/go-watcher) [![Build Status](https://travis-ci.org/canthefason/go-watcher.svg?branch=master)](https://travis-ci.org/canthefason/go-watcher)
+Watcher [![GoDoc](https://godoc.org/github.com/swizzley/go-watcher?status.svg)](https://godoc.org/github.com/swizzley/go-watcher) [![Build Status](https://travis-ci.org/swizzley/go-watcher.svg?branch=master)](https://travis-ci.org/swizzley/go-watcher)
 =======
 
 Forked to run make file on successful build
@@ -11,11 +11,11 @@ Most of the existing file watchers have a configuration burden, and even though 
 
   Get the package with:
 
-  `go get github.com/canthefason/go-watcher`
+  `go get github.com/swizzley/go-watcher`
 
   Install the binary under go/bin folder:
 
-  `go install github.com/canthefason/go-watcher/cmd/watcher`
+  `go install github.com/swizzley/go-watcher/cmd/watcher`
 
   After this step, please make sure that your go/bin folder is appended to PATH environment variable.
 
@@ -53,15 +53,15 @@ Since Globs and some optional folder arrays will make it harder to configure, we
 
 ## Watcher in Docker
 
-If you want to run Watcher in a containerized local environment, you can achieve this by using [canthefason/go-watcher](https://hub.docker.com/r/canthefason/go-watcher/) image in Docker Hub. There is an example project under [/docker-example](https://github.com/canthefason/go-watcher/tree/dockerfile-gvm/docker-examples) directoy. Let's try to dockerize this example code first.
+If you want to run Watcher in a containerized local environment, you can achieve this by using [swizzley/go-watcher](https://hub.docker.com/r/swizzley/go-watcher/) image in Docker Hub. There is an example project under [/docker-example](https://github.com/swizzley/go-watcher/tree/dockerfile-gvm/docker-examples) directoy. Let's try to dockerize this example code first.
 
 In our example, we are creating a server that listens to port 7000 and responds to all clients with "watcher is running" string. The most essential thing to run your code in Docker is, mounting your project volume to a container. In the containerized Watcher, our GOPATH is set to /go directory by default, so you need to mount your project to this GOPATH.
 
-  `docker run -v /path/to/hello:/go/src/hello -p 7000:7000 canthefason/go-watcher watcher -run hello`
+  `docker run -v /path/to/hello:/go/src/hello -p 7000:7000 swizzley/go-watcher watcher -run hello`
 
 Containerized Watcher also supports different versions of Go by leveraging [gvm](https://github.com/moovweb/gvm). Currently it only supports major versions right now. If you don't set anything, by default Watcher will pick version 1.7. If you want to change the Go version, you can use GO_VERSION environment variable. Currently it only supports 1.4, 1.5, 1.6, 1.7 at the moment
 
-   `docker run -v /path/to/hello:/go/src/hello -e GO_VERSION=1.6 -p 7000:7000 canthefason/go-watcher watcher -run hello`
+   `docker run -v /path/to/hello:/go/src/hello -e GO_VERSION=1.6 -p 7000:7000 swizzley/go-watcher watcher -run hello`
 
 To provide a more structured repo, we also integrated a docker-compose manifest file. That file already handles volume mounting operation that and exposes the port to the localhost. With docker-compose the only thing that you need to do from the root, invoking `docker-compose up
 
@@ -74,7 +74,7 @@ https://codereview.appspot.com/22020045
 
 ## Author
 
-* [Can Yucel](http://canthefason.com)
+* [Can Yucel](http://swizzley.com)
 
 ## License
 
