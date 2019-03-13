@@ -39,25 +39,25 @@ func (b *Builder) Build(p *Params) {
 		color.Cyan("Building %s...\n", pkg)
 
 		// build package
-		//cmd, err := runCommand("go", "build", "-i", "-o", fileName, pkg)
-		//if err != nil {
-		//	log.Fatalf("Could not run 'go build' command: %s", err)
-		//	continue
-		//}
-		//
-		//if err := cmd.Wait(); err != nil {
-		//	if err := interpretError(err); err != nil {
-		//		color.Red("An error occurred while building: %s", err)
-		//	} else {
-		//		color.Red("A build error occurred. Please update your code...")
-		//	}
-		//
-		//	continue
-		//}
-		//log.Println("build completed")
+		cmd, err := runCommand("go", "build", "-i", "-o", fileName, pkg)
+		if err != nil {
+			log.Fatalf("Could not run 'go build' command: %s", err)
+			continue
+		}
+
+		if err := cmd.Wait(); err != nil {
+			if err := interpretError(err); err != nil {
+				color.Red("An error occurred while building: %s", err)
+			} else {
+				color.Red("A build error occurred. Please update your code...")
+			}
+
+			continue
+		}
+		log.Println("build completed")
 
 		// make image
-		cmd, err := runCommand("make", "image")
+		cmd, err = runCommand("make", "image")
 		if err != nil {
 			log.Fatalf("Could not run 'make image' command: %s", err)
 			continue
