@@ -56,13 +56,10 @@ func (b *Builder) Build(p *Params) {
 		}
 		log.Println("build completed")
 
-		// and start the new process
-		b.runner.restart(fileName)
-
 		// make build
-		cmd, err = runCommand("make", "build")
+		cmd, err = runCommand("make", "image")
 		if err != nil {
-			log.Fatalf("Could not run 'make build' command: %s", err)
+			log.Fatalf("Could not run 'make image' command: %s", err)
 			continue
 		}
 
@@ -76,6 +73,9 @@ func (b *Builder) Build(p *Params) {
 			continue
 		}
 		log.Println("make completed")
+
+		// and start the new process
+		b.runner.restart(fileName)
 	}
 }
 

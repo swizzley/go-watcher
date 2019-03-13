@@ -1,7 +1,7 @@
 Watcher [![GoDoc](https://godoc.org/github.com/swizzley/go-watcher?status.svg)](https://godoc.org/github.com/swizzley/go-watcher) [![Build Status](https://travis-ci.org/swizzley/go-watcher.svg?branch=master)](https://travis-ci.org/swizzley/go-watcher)
 =======
 
-Forked to run make file on successful build
+Forked to run make file on successful build as `make image`
 
 Watcher is a command line tool inspired by [fresh](https://github.com/pilu/fresh) and used for watching .go file changes, and restarting the app in case of an update/delete/add operation.
 
