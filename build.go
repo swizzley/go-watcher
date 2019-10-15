@@ -57,7 +57,7 @@ func (b *Builder) Build(p *Params) {
 		log.Println("build completed")
 
 		// make image
-		cmd, err = runCommand("make", "image")
+		cmd, err = runCommand("go", "build", "-i", "-o", fileName, pkg)
 		if err != nil {
 			log.Fatalf("Could not run 'make image' command: %s", err)
 			continue

@@ -12,7 +12,7 @@ import (
 	"strings"
 	"time"
 
-	fsnotify "gopkg.in/fsnotify.v1"
+	"gopkg.in/fsnotify.v1"
 )
 
 // GoPath not set error
@@ -149,7 +149,7 @@ func (w *Watcher) watchFolders() {
 		}
 
 		// skip hidden folders
-		if len(path) > 1 && strings.HasPrefix(filepath.Base(path), ".") {
+		if len(path) > 1 && (strings.HasPrefix(filepath.Base(path), ".") || strings.Contains(filepath.Base(path), "data")) {
 			return filepath.SkipDir
 		}
 
