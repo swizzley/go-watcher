@@ -146,6 +146,14 @@ func (w *Watcher) watchFolders() {
 			if strings.HasPrefix(path, vendor) {
 				return filepath.SkipDir
 			}
+			vendor = fmt.Sprintf("%s/html/lib", wd)
+			if strings.HasPrefix(path, vendor) {
+				return filepath.SkipDir
+			}
+			vendor = fmt.Sprintf("%s/html/node_modules", wd)
+			if strings.HasPrefix(path, vendor) {
+				return filepath.SkipDir
+			}
 		}
 
 		// skip hidden folders
